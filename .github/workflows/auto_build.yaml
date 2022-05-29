@@ -15,7 +15,7 @@ jobs:
       - name: hexo-builder
         run: |
           echo "Hello from Octo Organization"
-          apt install npm
+          sudo apt install npm
           npm install -g hexo
           pwd
           hexo generate
