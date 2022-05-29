@@ -57,4 +57,4 @@ if __name__ == '__main__':
 
         create_new_markdown(image_name,new_md_data)
 
-
+    print('build new markdown for pic Success!')
