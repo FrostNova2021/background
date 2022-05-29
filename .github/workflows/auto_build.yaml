@@ -16,7 +16,7 @@ jobs:
         env:
           SUPER_USERNAME: ${{ secrets.USERNAME }}
           SUPER_EMAIL: ${{ secrets.EMAIL }}
-          SUPER_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           echo "Installing for hexo env"
           sudo apt install npm
@@ -28,7 +28,7 @@ jobs:
           echo "Try push"
           git config --global user.email "$SUPER_EMAIL"
           git config --global user.name "$SUPER_USERNAME"
-          git clone https://${{secrets.TOKEN}}@github.com/FrostNova2021/public
+          git clone https://$GITHUB_TOKEN@github.com/FrostNova2021/public
           cp -rf ../public ./public
           cd public
           git add .
