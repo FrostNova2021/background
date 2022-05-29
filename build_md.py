@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     print('build new markdown for pic Success!')
 
-    if not remove_image_list:
+    if not remove_md_image_list:
         print('no remove image')
         exit()
 
