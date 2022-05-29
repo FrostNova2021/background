@@ -14,6 +14,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: hexo-builder
         run: |
-          echo "Hello from Octo Organization" >> $GITHUB_STEP_SUMMARY
-          pwd >> $GITHUB_STEP_SUMMARY
-          hexo generate >> $GITHUB_STEP_SUMMARY
+          echo "Hello from Octo Organization"
+          apt install npm
+          npm install -g hexo
+          pwd
+          hexo generate
