@@ -19,14 +19,9 @@ jobs:
           npm install -g hexo
           echo "Build hexo"
           hexo generate
-
-  push_data:
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Pushes to another repository
-      - uses: cpina/github-action-push-to-another-repository@main
-      - env:
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
           API_TOKEN_GITHUB: ${{ secrets.TOKEN }}
           SUPER_USERNAME: ${{ secrets.USERNAME }}
           SUPER_EMAIL: ${{ secrets.EMAIL }}
