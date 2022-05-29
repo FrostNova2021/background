@@ -33,6 +33,23 @@ def filter_exist_data(image_list,md_list):
 
     return result
 
+def filter_remove_data(image_list,md_list):
+    process_image_name_list = []
+
+    for image_file_path in image_list:
+        image_file_name,_ = os.path.splitext(image_file_path)
+        process_image_name_list.append(image_file_name)
+
+    result = []
+
+    for md_file_path in md_list:
+        md_file_name,_ = os.path.splitext(md_file_path)
+        
+        if not md_file_name in process_image_name_list:
+            result.append(md_file_path)
+
+    return result
+
 def create_new_markdown(file_path,file_data):
     file_path = os.path.join(markdown_path,file_path)
     file = open(file_path,'w')
@@ -45,6 +62,7 @@ if __name__ == '__main__':
     image_list = os.listdir(image_path)
     md_list = os.listdir(markdown_path)
     new_image_list = filter_exist_data(image_list,md_list)
+    remove_md_image_list = filter_remove_data(image_list,md_list)
 
     if not new_image_list:
         print('no new image')
@@ -58,3 +76,12 @@ if __name__ == '__main__':
         create_new_markdown(image_name,new_md_data)
 
     print('build new markdown for pic Success!')
+
+    if not remove_image_list:
+        print('no remove image')
+        exit()
+
+    for md_image_index in remove_md_image_list:
+        os.remove(os.join(markdown_path,md_image_index))
+
+    print('remove old markdown Success!')
