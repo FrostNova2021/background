@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: hexo-builder
-        run: echo "Hello from Octo Organization"
+        run: |
+        echo "Hello from Octo Organization"
         ls pwd
         hexo generate
