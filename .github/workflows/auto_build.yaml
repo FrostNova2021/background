@@ -16,21 +16,22 @@ jobs:
         env:
           SUPER_USERNAME: ${{ secrets.USERNAME }}
           SUPER_EMAIL: ${{ secrets.EMAIL }}
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           echo "Installing for hexo env"
           sudo apt install npm
           npm install -g hexo
           echo "Build hexo"
           hexo generate
-          mkdir post_blog
-          cd post_blog
-          echo "Try push"
-          git config --global user.email "$SUPER_EMAIL"
-          git config --global user.name "$SUPER_USERNAME"
-          git clone https://$GITHUB_TOKEN@github.com/FrostNova2021/public
-          cp -rf ../public ./public
-          cd public
-          git add .
-          git commit -m "`date`"
-          git push
+
+      - name: Pushes to another repository
+      - uses: cpina/github-action-push-to-another-repository@main
+      - env:
+          API_TOKEN_GITHUB: ${{ secrets.TOKEN }}
+          SUPER_USERNAME: ${{ secrets.USERNAME }}
+          SUPER_EMAIL: ${{ secrets.EMAIL }}
+        with:
+          source-directory: 'public'
+          destination-github-username: ${{ secrets.USERNAME }}
+          destination-repository-name: 'public'
+          user-email: ${{ secrets.EMAIL }}
+          target-branch: main
