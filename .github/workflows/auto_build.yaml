@@ -13,6 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: hexo-builder
+        env:
+          SUPER_USERNAME: ${{ secrets.USERNAME }}
+          SUPER_EMAIL: ${{ secrets.EMAIL }}
         run: |
           echo "Installing for hexo env"
           sudo apt install npm
@@ -22,9 +25,9 @@ jobs:
           mkdir post_blog
           cd post_blog
           echo "Try push"
-          git config --global user.email "$EMAIL"
-          git config --global user.name "$USERNAME"
-          echo "$USERNAME"
+          git config --global user.email "$SUPER_EMAIL"
+          git config --global user.name "$SUPER_USERNAME"
+          echo "Name: $SUPER_USERNAME"
           git clone https://github.com/FrostNova2021/public
           cp -rf ../public ./public
           cd public
