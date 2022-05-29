@@ -14,8 +14,17 @@ jobs:
       - uses: actions/checkout@v3
       - name: hexo-builder
         run: |
-          echo "Hello from Octo Organization"
+          echo "Installing for hexo env"
           sudo apt install npm
           npm install -g hexo
-          pwd
+          echo "Build hexo"
           hexo generate
+          mkdir post_blog
+          cd post_blog
+          echo "Try push"
+          git clone https://github.com/FrostNova2021/public
+          cp -rf ../public ./public
+          cd public
+          git add .
+          git commit -m "`data`"
+          git push
