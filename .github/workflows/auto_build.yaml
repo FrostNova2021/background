@@ -32,5 +32,5 @@ jobs:
           cp -rf ../public ./public
           cd public
           git add .
-          git commit -m "`data`"
+          git commit -m "`date`"
           git push
