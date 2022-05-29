@@ -1,0 +1,16 @@
+name: blog_commit_builder
+
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: hexo-builder
+        run: echo "Hello from Octo Organization"
