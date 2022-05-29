@@ -22,6 +22,9 @@ jobs:
           mkdir post_blog
           cd post_blog
           echo "Try push"
+          git config --global user.email "$EMAIL"
+          git config --global user.name "$USERNAME"
+          echo "$USERNAME"
           git clone https://github.com/FrostNova2021/public
           cp -rf ../public ./public
           cd public
