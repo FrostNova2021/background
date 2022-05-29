@@ -28,7 +28,7 @@ jobs:
           echo "Try push"
           git config --global user.email "$SUPER_EMAIL"
           git config --global user.name "$SUPER_USERNAME"
-          git clone https://$SUPER_TOKEN@github.com/FrostNova2021/public
+          git clone https://${{secrets.TOKEN}}@github.com/FrostNova2021/public
           cp -rf ../public ./public
           cd public
           git add .
